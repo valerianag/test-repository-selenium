@@ -33,11 +33,14 @@ public class Task11 {
 
     @Test
     public void testFirst() throws InterruptedException {
-        String name = "email@seleniumtask.ru";
+        String name = "email@seleniumtestTask.ru";
         String pass = "123456";
         driver.get("http://localhost/litecart/en/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MILLISECONDS);
         driver.findElement(By.partialLinkText("New customers click here")).click();
+
+        driver.findElement(By.xpath(".//input[@name='tax_id']")).sendKeys("12345");
+        driver.findElement(By.xpath(".//input[@name='company']")).sendKeys("company");
         driver.findElement(By.xpath(".//input[@name='firstname']")).sendKeys("username");
         driver.findElement(By.xpath(".//input[@name='address1']")).sendKeys("address");
 
@@ -48,12 +51,15 @@ public class Task11 {
       //  driver.findElement(By.xpath(".//select[@name='country_code']")).click();
       //  driver.findElement(By.xpath(".//option[@value='AX']")).click();
         new Select(driver.findElement(By.xpath(".//select[@name='country_code']"))).selectByVisibleText("United States");
+        driver.findElement(By.xpath(".//input[@name='postcode']")).sendKeys("12345");
+        driver.findElement(By.xpath(".//input[@name='city']")).sendKeys("New York");
 
 
 
         driver.findElement(By.xpath(".//div[@class='form-group col-md-halfs required']//input[@name='email']")).sendKeys(name);
         driver.findElement(By.xpath(".//div[@class='form-group col-md-halfs required']//input[@name='password']")).sendKeys(pass);
         driver.findElement(By.xpath(".//button[@value='Create Account']")).click();
+
 
 
 
